@@ -108,6 +108,13 @@ section {
   color: #f2f2f2;
 }
 
+.linkedin-button {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
 @media (max-width: 768px) {
   .heading {
     font-size: 250%;
