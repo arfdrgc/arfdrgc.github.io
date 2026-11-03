@@ -741,6 +741,77 @@ p {
   bottom: 20px;
 }
 
+/* Studio corner ribbon drawn over untouched artwork.
+   Geometry is measured from the ribbons baked into the existing MooW Games
+   card images; all values are fractions of the image (inside the border). */
+#portfolio .studio-ribbon-wrap {
+  position: relative;
+  width: 550px; /* same box as the 540px card images + 2 x 5px border */
+  max-width: 100%;
+}
+
+#portfolio .studio-ribbon-wrap > img {
+  width: 100%;
+}
+
+#portfolio .studio-ribbon {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  aspect-ratio: 1 / 1;
+  border-top-left-radius: 25px; /* inner radius of the 30px / 5px image border */
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#portfolio .studio-ribbon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #61338B;
+  clip-path: polygon(0 0, 38.63% 0, 0 38.63%);
+}
+
+/* The baked-in ribbons use a tighter lockup than moow_logo_horizontal.png:
+   the cat icon and the "MOOW GAMES" text are each scaled uniformly, with the
+   text enlarged to the icon's height and the gap between them narrowed.
+   Both parts are cut from the same PNG so the logo is never distorted. */
+#portfolio .studio-ribbon-mark {
+  position: absolute;
+  left: 0.73%;
+  top: 11.7%;
+  width: 23.45%;
+  height: 6.99%;
+  transform: rotate(-45deg);
+}
+
+#portfolio .studio-ribbon-mark::before,
+#portfolio .studio-ribbon-mark::after {
+  content: "";
+  position: absolute;
+  background: url("../img/moow_logo_horizontal.png") no-repeat;
+}
+
+#portfolio .studio-ribbon-mark::before { /* cat icon */
+  left: -0.09%;
+  top: 0.97%;
+  width: 26.07%;
+  height: 98.56%;
+  background-size: 350.21% auto;
+  background-position: 1.81% 50%;
+}
+
+#portfolio .studio-ribbon-mark::after { /* MOOW GAMES text */
+  left: 31.6%;
+  top: -0.28%;
+  width: 68.21%;
+  height: 100.56%;
+  background-size: 168.51% auto;
+  background-position: 96.82% 50%;
+}
+
 /*--------------------------------------------------------------
 # Portfolio Details
 --------------------------------------------------------------*/
