@@ -27,3 +27,18 @@ Every project is a hand-written `.portfolio-item` block inside `.portfolio-conta
 - **Image**: put it in `assets/img/projects/`. The same path appears twice: in the `<img src>` and in the `.portfolio-lightbox` link's `href`. Lightbox links that share `data-gallery="portfolioGallery"` form one browsable gallery.
 - **Optional `.details-link`**: an external link (Play Store, App Store or YouTube) with a Boxicons icon (`bxl-play-store`, `bxl-youtube`, `bxs-planet`).
 - **Order**: items are listed newest first within each category, with Gaming first.
+
+### MooW Games corner ribbon
+
+MooW Games cards carry a purple top-left corner ribbon with the white "MOOW GAMES" logo. On the older cards it is baked into the image files, so **don't edit those images**. For new MooW games, keep the store artwork untouched and add the ribbon with CSS by wrapping the card image (see the Sand Drop card, first in the grid):
+
+```html
+<div class="studio-ribbon-wrap">
+  <img src="assets/img/projects/<game>.png" class="img-fluid" alt="<Game name>">
+  <div class="studio-ribbon" aria-hidden="true"><span class="studio-ribbon-mark"></span></div>
+</div>
+```
+
+- The styles are the `.studio-ribbon*` rules in `style.css`. All values are percentages measured from the baked-in ribbons (triangle legs 38.63%, `#61338B`), so the ribbon scales with the card and works with any square artwork.
+- The logo is drawn from `assets/img/moow_logo_horizontal.png` as two background pieces: the cat icon and the text. That reproduces the tighter icon/text layout of the baked-in ribbons without stretching the logo, so don't replace it with a single scaled `<img>`.
+- The ribbon has `pointer-events: none` and sits under the hover panel. The `.portfolio-lightbox` link should point to the plain artwork, so the zoom view shows it without the ribbon.
